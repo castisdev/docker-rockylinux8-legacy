@@ -46,6 +46,7 @@ RUN yum install -y \
   libunwind-devel \
   libwebp-devel \
   protobuf-compiler \
+  libasan \
   patch \
   && yum -y clean all
 
@@ -54,14 +55,18 @@ RUN yum -y --enablerepo=powertools install boost-static; yum -y clean all
 ADD install_xercesc280.sh /script/
 RUN /script/install_xercesc280.sh
 
-ADD install_cmake3241.sh /script/
-RUN /script/install_cmake3241.sh
+ADD install_cmake402.sh /script/
+RUN /script/install_cmake402.sh
 
-ADD install_cryptopp870.sh /script/
-RUN /script/install_cryptopp870.sh
+ADD install_boost188.sh /script/
+RUN /script/install_boost188.sh
+ENV Boost_DIR /root/boost_1_88_0
 
-ADD install_googletest1121.sh /script/
-RUN /script/install_googletest1121.sh
+ADD install_cryptopp890.sh /script/
+RUN /script/install_cryptopp890.sh
+
+ADD install_googletest1170.sh /script/
+RUN /script/install_googletest1170.sh
 
 ADD install_python.sh /script/
 RUN /script/install_python.sh
@@ -69,20 +74,17 @@ RUN /script/install_python.sh
 ADD install_cpptools.sh /script/
 RUN /script/install_cpptools.sh
 
-ADD install_cppcheck28.sh /script/
-RUN /script/install_cppcheck28.sh
+ADD install_cppcheck2170.sh /script/
+RUN /script/install_cppcheck2170.sh
 
 ADD install_zsh59.sh /script/
 RUN /script/install_zsh59.sh
 
-ADD install_ninja1110.sh /script/
-RUN /script/install_ninja1110.sh
+ADD install_ninja1121.sh /script/
+RUN /script/install_ninja1121.sh
 
-ADD install_ffmpeg51.sh /script/
-RUN /script/install_ffmpeg51.sh
-
-ADD install_golang119.sh /script/
-RUN /script/install_golang119.sh
+ADD install_golang1243.sh /script/
+RUN /script/install_golang1243.sh
 
 ADD install_wrk420.sh /script/
 RUN /script/install_wrk420.sh
